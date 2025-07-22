@@ -1,6 +1,6 @@
 # SubAPI
 
-A Subscription RESTful API for managing user subscriptions, plans, and billing. This project provides endpoints to create, update, and manage subscriptions for digital products or services.
+A RESTful API for managing user subscriptions, plans, and billing. This project provides endpoints to create, update, and manage subscriptions for digital products or services.
 
 ## Features
 
@@ -46,11 +46,11 @@ The API will be available at `http://localhost:3000`.
 
 ## API Endpoints (Sample)
 
-- `POST /api/register` – Register a new user
-- `POST /api/login` – Authenticate user
-- `GET /api/plans` – List available subscription plans
-- `POST /api/subscribe` – Subscribe to a plan
-- `POST /api/unsubscribe` – Cancel a subscription
+- `POST /api/v1/auth/register` – Register a new user
+- `POST /api/v1/auth/login` – Authenticate user
+- `GET /api/v1/plans` – List available subscription plans
+- `POST /api/v1/subscribe` – Subscribe to a plan
+- `POST /api/v1/unsubscribe` – Cancel a subscription
 
 ## Contributing
 

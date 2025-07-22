@@ -1,4 +1,9 @@
 import { Router } from "express";
+import {
+  createSubscription,
+  getUserSubscriptions,
+} from "../controllers/subscription.controller.js";
+import authorize from "../middlewares/auth.middleware.js";
 
 const subscriptionRouter = Router();
 
@@ -10,9 +15,7 @@ subscriptionRouter.get("/:id", (req, res) => {
   res.send(`GET subscription with ID: ${req.params.id}`);
 });
 
-subscriptionRouter.post("/", (req, res) => {
-  res.send("Create a new subscription");
-});
+subscriptionRouter.post("/", authorize, createSubscription);
 
 subscriptionRouter.put("/:id", (req, res) => {
   res.send(`Update subscription with ID: ${req.params.id}`);
@@ -22,20 +25,18 @@ subscriptionRouter.delete("/:id", (req, res) => {
   res.send(`Delete subscription with ID: ${req.params.id}`);
 });
 
-subscriptionRouter.get("/user/:userId", (req, res) => {
-  res.send(`GET subscriptions for user with ID: ${req.params.userId}`);
-});
+subscriptionRouter.get("/user/:id", authorize, getUserSubscriptions);
 
-subscriptionRouter.put("/user/:userId/cancel", (req, res) => {
-  res.send(`Cancel subscription for user with ID: ${req.params.userId}`);
+subscriptionRouter.put("/user/:id/cancel", (req, res) => {
+  res.send(`Cancel subscription for user with ID: ${req.params.id}`);
 });
 
 subscriptionRouter.get("/upcoming", (req, res) => {
   res.send("GET upcoming subscription renewals");
 });
 
-subscriptionRouter.post("/user/:userId/renew", (req, res) => {
-  res.send(`Renew subscription for user with ID: ${req.params.userId}`);
+subscriptionRouter.post("/user/:id/renew", (req, res) => {
+  res.send(`Renew subscription for user with ID: ${req.params.id}`);
 });
 
 subscriptionRouter.get("/active", (req, res) => {
